@@ -12,21 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-           // 'form'=>$form->CreateView(),
-        ]);
-    }
-
-    /**
      * @Route("/showCRUD", name="showCRUD")
      */
-    public function crudAction(Request $request)
+    public function createAction(Request $request)
     {
         $article = new Article();
 
@@ -36,7 +24,7 @@ class DefaultController extends Controller
 
         // if($form->isSubmitted() && $form->isValid()) {
         if ($form->isValid()) {
-            $article = $form->getData();
+            // $article = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
@@ -47,6 +35,20 @@ class DefaultController extends Controller
 
         return $this->render('default/new.html.twig', array(
             'form' => $form->CreateView(),
+        ));
+    }
+
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function indexAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $articleRepository = $em->getRepository(Article::Class);
+        $articles = $articleRepository->findAll();
+
+        return $this->render('default/index.html.twig', array(
+            'articles' => $articles,
         ));
     }
 }
