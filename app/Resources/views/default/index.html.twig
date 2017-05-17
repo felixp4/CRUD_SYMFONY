@@ -1,7 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   {% for article in articles %}
-        {{ article.name }}
-   {% endfor %}
+    <h1> Список объектов </h1>
+
+    <table>
+        <tbody>
+            {% for article in articles %}
+               <tr>
+                   <td> {{ article.id }} -> {{ article.name }}  </td>
+                   <td> {{ article.description }} </td>
+                   <td> {{ article.createdAt|date('Y-m-d H:i:s') }}  </td>
+
+                   <td> <a href = "{{ path('update', { 'id': article.id }) }}" > Update </a> </td>
+                   <td> <a href = "{{ path('delete', { 'id': article.id }) }}"> Delete </a> </td>
+               </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href = " {{ path('create') }}"> Create </a>
 {% endblock %}

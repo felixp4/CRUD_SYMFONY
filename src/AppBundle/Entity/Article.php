@@ -46,7 +46,7 @@ class Article
      *
      * @param string $name
      *
-     * @return Product
+     * @return Article
      */
     public function setName($name)
     {
@@ -68,9 +68,9 @@ class Article
     /**
      * Set createdAt
      *
-     * @param string $price
+     * @param string $createdAt
      *
-     * @return Product
+     * @return Article
      */
     public function setCreatedAt($createdAt)
     {
@@ -94,7 +94,7 @@ class Article
      *
      * @param string $description
      *
-     * @return Product
+     * @return Article
      */
     public function setDescription($description)
     {

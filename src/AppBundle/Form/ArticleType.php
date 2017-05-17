@@ -1,5 +1,4 @@
 <?php
-// src/AppBundle/Form/ArticleType.php
 
 namespace AppBundle\Form;
 
@@ -8,6 +7,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use AppBundle\Entity\Article;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ArticleType extends AbstractType
 {
@@ -17,7 +18,14 @@ class ArticleType extends AbstractType
             ->add('name', TextType::Class)
             ->add('description', TextType::Class)
             ->add('createdAt', DateType::Class)
-            ->add('save', SubmitType::Class, array('label' => 'Create post object'))
+            ->add('save', SubmitType::Class, array('label' => 'Post article'))
         ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Article::class,
+        ));
     }
 }
