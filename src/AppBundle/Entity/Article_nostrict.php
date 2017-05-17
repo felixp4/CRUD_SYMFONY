@@ -1,53 +1,40 @@
 <?php
 
-declare(strict_types=1);
-
 Namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
- * Article
- *
- * @ORM\ Entity()
+ * @ORM\ Entity
  */
 class Article
 {
     /**
-     * @var int
-     *
-     * @ORM\ Column(name="id", type="integer")
+     * @ORM\ Column(type="integer")
      * @ORM\ Id
      * @ORM\ GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\ Column(name="name", type="string", length=255)
+     * @ORM\ Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\ Column(name="description", type="text")
+     * @ORM\ Column(type="text")
      */
     private $description;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\ Column(name="created_at", type="datetime")
+     * @ORM\ Column(type="datetime", name="created_at")
      */
     private $createdAt;
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -61,7 +48,7 @@ class Article
      *
      * @return Article
      */
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
 
@@ -73,19 +60,19 @@ class Article
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
-        return (string) $this->name;
+        return $this->name;
     }
 
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param string $createdAt
      *
      * @return Article
      */
-    public function setCreatedAt(\DateTime $createdAt): Article
+    public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -95,7 +82,7 @@ class Article
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return string
      */
     public function getCreatedAt()
     {
@@ -109,7 +96,7 @@ class Article
      *
      * @return Article
      */
-    public function setDescription($description): Article
+    public function setDescription($description)
     {
         $this->description = $description;
 
@@ -121,8 +108,8 @@ class Article
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
-        return (string) $this->description;
+        return $this->description;
     }
 }
