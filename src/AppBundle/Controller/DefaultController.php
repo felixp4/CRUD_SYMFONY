@@ -62,13 +62,13 @@ class DefaultController extends Controller
         $article = $articleRepository->find($id);
 
         $updateForm = $this->createForm(ArticleType::Class, $article);
-        $updateForm -> handleRequest($request);
+        $updateForm->handleRequest($request);
 
-        if($updateForm->isValid()) {
-            $em -> persist($article);
-            $em -> flush();
+        if ($updateForm->isValid()) {
+            $em->persist($article);
+            $em->flush();
 
-            return $this->redirectToRoute('homepage' );
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('default/form.html.twig', array(
@@ -92,6 +92,6 @@ class DefaultController extends Controller
         $em->remove($article);
         $em->flush();
 
-        return $this->redirectToRoute('homepage' );
+        return $this->redirectToRoute('homepage');
     }
 }
