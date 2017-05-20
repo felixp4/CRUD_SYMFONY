@@ -6,12 +6,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Article;
 use AppBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/create", name="create")
+     * @param $request
+     * @return RedirectResponse|Response
      */
     public function createAction(Request $request)
     {
@@ -36,6 +40,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/", name="homepage")
+     * @return Response
      */
     public function indexAction()
     {
@@ -50,8 +55,8 @@ class DefaultController extends Controller
 
     /**
      * @Route("/update/{id}", name="update")
-     * @param $id
-     * @return |Symfony/Component/HttpFoundation/Response
+     * @param $request
+     * @return RedirectResponse|Response
      */
     public function updateAction(Request $request)
     {
@@ -78,8 +83,8 @@ class DefaultController extends Controller
 
     /**
      * @Route("/delete/{id}", name="delete")
-     * @param $id
-     * @return |Symfony/Component/HttpFoundation/RedirectResponse
+     * @param $request
+     * @return RedirectResponse|Response
      */
     public function deleteAction(Request $request)
     {
