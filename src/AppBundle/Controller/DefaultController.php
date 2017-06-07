@@ -13,6 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
+     * @Route("/admin")
+     */
+    public function adminAction()
+    {
+        return new Response('<html><body>Admin page!</body></html>');
+    }
+
+    /**
      * @Route("/create", name="create")
      * @param $request
      * @return RedirectResponse|Response
