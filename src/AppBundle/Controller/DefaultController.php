@@ -21,7 +21,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/create", name="create")
+     * @Route("/article/create", name="create")
      * @param $request
      * @return RedirectResponse|Response
      */
@@ -47,7 +47,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/article", name="homepage")
      * @return Response
      */
     public function indexAction()
@@ -62,7 +62,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/update/{id}", name="update")
+     * @Route("/article/update/{id}", name="update")
      * @param $request
      * @return RedirectResponse|Response
      */
@@ -90,7 +90,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/article/delete/{id}", name="delete")
      * @param $request
      * @return RedirectResponse|Response
      */
