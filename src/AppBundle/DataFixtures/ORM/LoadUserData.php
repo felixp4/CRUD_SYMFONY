@@ -12,12 +12,12 @@ class LoadUserData implements FixtureInterface
     {
         $userAdmin = new User();
         $userAdmin->setUsername('admin');
-        $userAdmin->setPassword('kitten');
+        $userAdmin->setPassword(password_hash('kitten', PASSWORD_BCRYPT));
         $userAdmin->setEmail('admin@example.com');
 
         $userRyan = new User();
         $userRyan->setUsername('ryan');
-        $userRyan->setPassword('ryanpass');
+        $userRyan->setPassword(password_hash('ryanpass', PASSWORD_BCRYPT));
         $userRyan->setEmail('ryan@example.com');
 
         $manager->persist($userAdmin);
