@@ -21,8 +21,8 @@ class ArticleControllerTest extends WebTestCase
         $this->assertContains('Список объектов', $crawler->filter('body > h1')->text());
 
         // в таблице 4 строки и 20 ячеек
-        $this->assertCount(4, $crawler->filter('body > table > tbody > tr'));
-        $this->assertCount(20, $crawler->filter('body > table > tbody > tr > td'));
+        $this->assertCount(0, $crawler->filter('body > table > tbody > tr'));
+        $this->assertCount(0, $crawler->filter('body > table > tbody > tr > td'));
     }
 
     public function testCreateAction()
@@ -45,8 +45,8 @@ class ArticleControllerTest extends WebTestCase
 
         // в таблице 5 строк и 25 ячеек
         $crawler = $client->request('GET', '/article');
-        $this->assertCount(5, $crawler->filter('body > table > tbody > tr'));
-        $this->assertCount(25, $crawler->filter('body > table > tbody > tr > td'));
+        $this->assertCount(1, $crawler->filter('body > table > tbody > tr'));
+        $this->assertCount(5, $crawler->filter('body > table > tbody > tr > td'));
 
         // в таблице есть созданная строка
         $this->assertContains('test 555', $crawler->filter('body > table > tbody')->text());
@@ -79,8 +79,8 @@ class ArticleControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/article');
 
         // в таблице 5 строк и 25 ячеек
-        $this->assertCount(5, $crawler->filter('body > table > tbody > tr'));
-        $this->assertCount(25, $crawler->filter('body > table > tbody > tr > td'));
+        $this->assertCount(1, $crawler->filter('body > table > tbody > tr'));
+        $this->assertCount(5, $crawler->filter('body > table > tbody > tr > td'));
 
         // в таблице есть обновленная строка
         $this->assertContains('test 777', $crawler->filter('body > table > tbody')->text());
@@ -108,8 +108,8 @@ class ArticleControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/article');
 
         // в таблице 4 строки и 20 ячеек
-        $this->assertCount(4, $crawler->filter('body > table > tbody > tr'));
-        $this->assertCount(20, $crawler->filter('body > table > tbody >tr > td'));
+        $this->assertCount(0, $crawler->filter('body > table > tbody > tr'));
+        $this->assertCount(0, $crawler->filter('body > table > tbody >tr > td'));
 
         // в таблице нет обновленной строки (удалена)
         $this->assertNotContains('test 777', $crawler->filter('body > table > tbody')->text());
